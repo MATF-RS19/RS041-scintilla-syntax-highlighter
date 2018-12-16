@@ -19,3 +19,21 @@ Izvorni kod za scintilla i scite projekte mogu se naci na oficijalnom scintilla 
 
 Pracenjem upustva iz dokumentacije kreiran je probni lekser koji sve reci boji u crvenu boju i komentare izmedju (* *) znakova boji u plavu boju. Uz manje poteskoce uspelo je povezivanje sa scite editorom u kojem je ubacena opcija za MBox u opciji Languages koja prilikom selekcije markira tekst po pravilima iz gore navedenog probnog leksera koji funkcionise.
 
+
+# Izvestaj 2
+
+## Prepoznavanje i obelezavanje From, Date i Subject linija
+
+Posle uspesnog test leksera razvijanje leksera za MBox header je u fazi razvoja. Trenutno lekser prepoznaje linije From, Date i Subject i oznacava ih.
+#### From linija je u  formatu:
+From kljucna rec za kojom sledi rec bez razmaka ili vise reci pod znacima navoda nakon kojih je datum u formatu skraceno ime dana(Mon, Thu, ...), skraceno ime meseca(Jan, Feb, ...),  dd dan u mesecu(01, 02, ...), hh:mm:ss vreme(01:01:01, ...), yyyy godina(2017, 2018, ...).
+#### Date linija je u formatu:
+Date: kljucna rec za kojom sledi datum u formatu dd/mm/yy nakon cega je vreme u dvanaestocasovnom formatu hh:mm i oznaka doba dana am ili pm.
+#### Subject linija je u formatu:
+Subject: kjucna rec za kojom sledi prazna rec ili jedna ili vise reci.
+
+Lekser je uspesno povezan sa SciTe editorom i pri ucitavanju fajla sa ekstenzijom mbox oznacava validne linije ukoliko postoje. Takodje lekser se moze pokrenuti kada u glavnom meniju editora kliknemo na opciju Languages i izaberemo MBox.
+
+## Problemi sa neispravnim redosledom linija
+
+Lekser trenutno oznacava i prihvata gore navedene linije u bilo kojem redosledu i bilo gde u fajlu. Obavezan redosled je From linija za kojom sledi Date linija za kojom sledi Subject linija za kojom opciono sledi jedna ili vise linija u formatu KEYWORD:VALUE i na kraju svih linija prazna linija nakon cega se nalazi tekst sve do sledeceg validno formiranog MBox zaglavlja.
