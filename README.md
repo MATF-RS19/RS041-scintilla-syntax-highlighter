@@ -37,3 +37,10 @@ Lekser je uspesno povezan sa SciTe editorom i pri ucitavanju fajla sa ekstenzijo
 ## Problemi sa neispravnim redosledom linija
 
 Lekser trenutno oznacava i prihvata gore navedene linije u bilo kojem redosledu i bilo gde u fajlu. Obavezan redosled je From linija za kojom sledi Date linija za kojom sledi Subject linija za kojom opciono sledi jedna ili vise linija u formatu KEYWORD:VALUE i na kraju svih linija prazna linija nakon cega se nalazi tekst sve do sledeceg validno formiranog MBox zaglavlja.
+
+
+#Izvestaj 3
+
+## Prepoznavanje validnog MBox zaglavlja
+
+Lekset uspesno moze da prepozna validno MBox zaglavlje koje je za sada definisano kao sto je prethodno navedeno ali ce se preci na qmail standard za MBox http://www.qmail.org/qmail-manual-html/man5/mbox.html koji je ujedno i jedan od zvanicnih standara.
