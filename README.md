@@ -51,3 +51,14 @@ Lekser za sada radi kao sto je ocekivano na manjim fajlovima, ali prilikom ucita
 Problem nastaje jer pri svakom pozivanju leksera on obradjuje kompletan fajl sto je funkcionalno za fajlove manje velicine. Zbog obradjivanja i nekih sintaksickih osobina MBox zaglavlja to je bilo privremeno resenje. Trenutno je ideja da se pribegne inkremntalnom oznacivanju fajla gde ce se oznacavati samo delovi koji su vidjivi u prozoru editora i jos neke dodatne linije ukoliko je to potrebno i prethodno oznacene linije se nece ponovo oznacivati sve dok se ne izmeni neki njihov deo.
 Pokusano je implementirati ideju ali zbog nepoznatih uticaja dela koda lekser nije pozivan od strane editora kada je potrebno na primer kada korisnik skroluje dokument ostali delovi osim dala koji je prvi bio vidljiv ostaju neoznaceni.
 
+
+# Izvestaj 4
+
+## Resen problem sa efikasnoscu leksera
+
+Lekser sada uspesno obradjuje vece fajlove (testirano na fajlu od oko 100mb), ali jos uvek dolazi do malo duzeg odziva leksera prilikom velike kolicine skrola na desnom panelu (skrolovanje pomocu misa funkcionise efikasno).
+Problem je resen dopunjenom inkrementalnom metodom koja je ranije navedena tako da sada lekser obradjuje tekst koji je vidljiv i nalazi se izmedju prethodnog validnog MBox zaglavlja i narednog zaglavlja, takodje vec oznaceni delovi se ne obradjuju dok ne dodje do izmene.
+
+## Dalje poboljsavanje efikasnosti
+
+Iako lekser sada obradjuje samo deo teksta koji je neophodan mapa stanja koja cuva oznaku linija teksta svaki put mora da se cela azurira sto takodje trosi izvesnu kolicinu vremena. Ideja je slicna kao i za obradu teksta tj. da se omugici samo obrada oznaka linija koje su izmenjene ili na neki nacin uticu na liniju koja je oznacena i obratno( npr. izmena Subject linije ukoliko postane nepravilno zapisana moze dovesti do potrebe za izmenjivanje oznake prethodnih Date i From linija ).
