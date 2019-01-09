@@ -43,4 +43,11 @@ Lekser trenutno oznacava i prihvata gore navedene linije u bilo kojem redosledu 
 
 ## Prepoznavanje validnog MBox zaglavlja
 
-Lekset uspesno moze da prepozna validno MBox zaglavlje koje je za sada definisano kao sto je prethodno navedeno ali ce se preci na qmail standard za MBox http://www.qmail.org/qmail-manual-html/man5/mbox.html koji je ujedno i jedan od zvanicnih standara.
+Lekser uspesno moze da prepozna validno MBox zaglavlje koje je za sada definisano kao sto je prethodno navedeno ali ce se preci na qmail standard za MBox http://www.qmail.org/qmail-manual-html/man5/mbox.html koji je ujedno i jedan od zvanicnih standara.
+
+## Problem sa performansama leksera
+
+Lekser za sada radi kao sto je ocekivano na manjim fajlovima, ali prilikom ucitavanje fajlova vece velicine (10mb ili vise) primetne su lose performanse koje onemogucavaju normalan rad u editoru.
+Problem nastaje jer pri svakom pozivanju leksera on obradjuje kompletan fajl sto je funkcionalno za fajlove manje velicine. Zbog obradjivanja i nekih sintaksickih osobina MBox zaglavlja to je bilo privremeno resenje. Trenutno je ideja da se pribegne inkremntalnom oznacivanju fajla gde ce se oznacavati samo delovi koji su vidjivi u prozoru editora i jos neke dodatne linije ukoliko je to potrebno i prethodno oznacene linije se nece ponovo oznacivati sve dok se ne izmeni neki njihov deo.
+Pokusano je implementirati ideju ali zbog nepoznatih uticaja dela koda lekser nije pozivan od strane editora kada je potrebno na primer kada korisnik skroluje dokument ostali delovi osim dala koji je prvi bio vidljiv ostaju neoznaceni.
+
