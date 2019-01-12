@@ -62,3 +62,9 @@ Problem je resen dopunjenom inkrementalnom metodom koja je ranije navedena tako 
 ## Dalje poboljsavanje efikasnosti
 
 Iako lekser sada obradjuje samo deo teksta koji je neophodan mapa stanja koja cuva oznaku linija teksta svaki put mora da se cela azurira sto takodje trosi izvesnu kolicinu vremena. Ideja je slicna kao i za obradu teksta tj. da se omugici samo obrada oznaka linija koje su izmenjene ili na neki nacin uticu na liniju koja je oznacena i obratno( npr. izmena Subject linije ukoliko postane nepravilno zapisana moze dovesti do potrebe za izmenjivanje oznake prethodnih Date i From linija ).
+
+# Izvestaj 5
+
+## Prepoznavanje validnog MBox zaglavlja
+
+Lexer trenutno prepoznaje validno MBox zaglavlje opisano na http://www.qmail.org/qmail-manual-html/man5/mbox.html. Po definiciji validno MBox zaglavlje sastoji se od prazne linije (osim ako je pocetak fajla) pracene From linijom prethodno definisanom za kojom sledi sekvenca linija u formatu <kljucna_rec>: <vrednost> bez blanko linija, i zavrsava se praznom linijom.
